@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "562344302357",
+    "project_id": "retailer-application-841e1",
+    "storage_bucket": "retailer-application-841e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562344302357:android:d06596abf381bae7377b1c",
+        "android_client_info": {
+          "package_name": "com.example.retailerapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562344302357-6sp4rfel2apeg3qvik7sgs4lq86e698l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPLWmO4WcSGs-nW2nLEiGqc0r67SqzWTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562344302357-6sp4rfel2apeg3qvik7sgs4lq86e698l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
