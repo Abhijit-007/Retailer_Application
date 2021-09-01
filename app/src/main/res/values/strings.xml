@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Retailer Application</string>
+    <string name="h_name">Name</string>
+    <string name="h_email">Email</string>
+    <string name="address_line1">Address line1</string>
+    <string name="address_line2">Address line2</string>
+    <string name="pin_code">Pincode</string>
 </resources>
