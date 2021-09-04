@@ -5,4 +5,7 @@
     <string name="address_line1">Address line1</string>
     <string name="address_line2">Address line2</string>
     <string name="pin_code">Pincode</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="store_name">Store Name</string>
 </resources>
