@@ -75,6 +75,8 @@ public class VerifyOtp extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
                                     Intent intent = new Intent(getApplicationContext(), registerform.class);
+                                    intent.putExtra("mobileNo",getIntent().getStringExtra("mobile"));
+                                    startActivity(intent);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                 } else {
