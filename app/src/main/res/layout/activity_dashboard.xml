@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".dashboard">
 
     <LinearLayout
@@ -34,5 +33,21 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name" />
+
     </LinearLayout>
-</ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/bottom_back"
+        app:elevation="0dp"
+        app:itemIconTint="@color/black"
+        app:itemIconSize="@dimen/text_margin"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/bottom_menu_navigation" />
+
+</RelativeLayout>
