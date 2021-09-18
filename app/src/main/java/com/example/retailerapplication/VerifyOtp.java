@@ -14,12 +14,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class VerifyOtp extends AppCompatActivity {
 
@@ -74,11 +87,13 @@ public class VerifyOtp extends AppCompatActivity {
                                 submitotp.setVisibility(View.VISIBLE);
 
                                 if (task.isSuccessful()) {
-                                    Intent intent = new Intent(getApplicationContext(), registerform.class);
+
+                                    loadRegisterFormOrDashboard();
+                                  /*  Intent intent = new Intent(getApplicationContext(), registerform.class);
                                     intent.putExtra("mobileNo",getIntent().getStringExtra("mobile"));
-                                    startActivity(intent);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
+                                    startActivity(intent);*/
+                                   // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                   // startActivity(intent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Please Enter Correct Otp", Toast.LENGTH_SHORT).show();
                                 }
@@ -101,6 +116,47 @@ public class VerifyOtp extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private void loadRegisterFormOrDashboard(){
+        String URL="https://1o2016dkq7.execute-api.us-east-2.amazonaws.com/Dev/retailer?mobileNo="+getIntent().getStringExtra("mobile");
+        Map<String, String> params = new HashMap();
+        //params.put("mobileNo", getIntent().getStringExtra("mobile"));
+        //JSONObject parameters = new JSONObject(params);
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Intent intent = new Intent(getApplicationContext(), dashboard.class);
+                intent.putExtra("mobileNo",getIntent().getStringExtra("mobile"));
+                try {
+                    JSONObject jsonObject=response.getJSONObject("Item");
+                    if (null!=jsonObject && jsonObject.getString("mobileNo")!=null) {
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intentRegi = new Intent(getApplicationContext(), registerform.class);
+                        intentRegi.putExtra("mobileNo",getIntent().getStringExtra("mobile"));
+                        startActivity(intentRegi);
+                    }
+                } catch (JSONException e) {
+                    Intent intentRegi = new Intent(getApplicationContext(), registerform.class);
+                    intentRegi.putExtra("mobileNo",getIntent().getStringExtra("mobile"));
+                    startActivity(intentRegi);
+                    e.printStackTrace();
+                }
+                //Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
     }
 
     private void numbertomove() {

@@ -81,7 +81,7 @@ public class registerform extends AppCompatActivity {
 
                     //RegisterData registerData=new RegisterData();
                     //registerData.execute("");
-                    processData("+91737838338","yes");
+                    processData();
                     Intent intent = new Intent(getApplicationContext(), dashboard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -93,29 +93,7 @@ public class registerform extends AppCompatActivity {
         });
     }
 
-    private void processData(String s, String eieiei) {
-        /*StringRequest request=new StringRequest(Request.Method.POST, "https://jgmsfyyvk4.execute-api.us-east-2.amazonaws.com/default/RetailerFunction?mobileNo=9773737228", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "Rest API Success.."+response, Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Rest API Failed.."+error, Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> map=new HashMap<String,String>();
-               // map.put("mobileNo",s);
-                //map.put("isAvailable",eieiei);
-                return map;
-            }
-        };
-        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
-        queue.add(request);*/
+    private void processData() {
         String URL="https://1o2016dkq7.execute-api.us-east-2.amazonaws.com/Dev/retailer";
         Map<String, String> params = new HashMap();
 
